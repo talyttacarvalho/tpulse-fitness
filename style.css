@@ -1,3 +1,4 @@
+
 :root {
   --fundo-claro: #F4F6FA;
   --primaria: #3A506B;
@@ -10,141 +11,226 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
   background-color: var(--fundo-claro);
   color: var(--primaria);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   line-height: 1.6;
 }
 
+/* Conteúdo principal */
+
 .top {
   display: flex;
-  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
-  gap: 3rem;
-  position: relative;
-  overflow: hidden;
   flex-wrap: wrap;
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
 }
 
+.title {
+  flex: 1 1 350px;
+  max-width: 600px;
+  text-align: left;
+}
+
+.title h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  line-height: 1.2;
+  color: var(--acao);
+}
+
+.title h3 {
+  margin: 1.5rem 0;
+  font-size: 1.15rem;
+  font-weight: 400;
+  color: var(--texto-suave);
+}
+
+/* Botão da planilha */
+
+.training-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.9rem 1.5rem;
+  min-height: 44px;
+  background-color: var(--destaque);
+  color: var(--acao);
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease,
+    transform 0.2s ease;
+}
+
+.training-link:hover {
+  background-color: var(--acao);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.training-link:focus-visible,
+footer a:focus-visible {
+  outline: 3px solid var(--destaque);
+  outline-offset: 4px;
+}
+
+/* Imagem principal */
+
 .image {
-  flex: 1;
+  flex: 1 1 350px;
   display: flex;
   justify-content: center;
 }
 
 .image img {
-  max-width: 90%;
+  display: block;
+  width: 100%;
+  max-width: 480px;
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 }
 
-.title {
-  flex: 1;
-  max-width: 600px;
-  text-align: left;
-  position: relative;
-  z-index: 1;
-}
-
-h1 {
-  font-size: 2.5rem;
-  color: var(--acao);
-}
-
-h3 {
-  margin: 1rem 0;
-  color: var(--texto-suave);
-}
-
-.title a {
-  display: flex;
-  justify-content: center;
-  text-decoration: none;
-}
-
-button {
-  background-color: var(--destaque);
-  color: white;
-  border: none;
-  padding: 0.8rem 1.2rem;
-  font-size: 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  text-decoration: none;
-}
-
-button:hover {
-  background-color: var(--acao);
-}
+/* Funcionalidades */
 
 .role {
-  padding: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 2rem 4rem;
 }
 
 .role h2 {
-  font-size: 2rem;
   margin-bottom: 2rem;
+  font-size: 2rem;
   text-align: center;
+  color: var(--acao);
 }
 
 .role ul {
-  list-style-type: none;
-  padding-left: 0;
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 2rem;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1.5rem;
+  list-style: none;
 }
 
 .role li {
-  flex: 1 1 20%;
-  max-width: 22%;
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 1.2rem;
+  font-size: 1.05rem;
   color: var(--acao);
 }
 
 .role li i {
+  flex-shrink: 0;
   color: var(--destaque);
   font-size: 1.5rem;
 }
 
+/* Rodapé */
+
 footer {
   margin-top: 2rem;
-  padding: 1rem;
+  padding: 1.5rem;
   text-align: center;
   background-color: var(--primaria);
   color: white;
 }
 
 footer a {
-  margin: 0 1rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 44px;
+  min-height: 44px;
+  margin: 0 0.25rem;
   color: white;
+  font-size: 1.3rem;
   text-decoration: none;
 }
 
 footer a:hover {
-  text-decoration: underline;
+  color: var(--destaque);
 }
+
+/* Tablets */
+
+@media (max-width: 900px) {
+  .role ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Celulares */
 
 @media (max-width: 768px) {
   .top {
     flex-direction: column;
+    gap: 2rem;
+    padding: 3rem 1.5rem;
+  }
+
+  .title {
+    flex: none;
+    width: 100%;
+    text-align: center;
+  }
+
+  .title h3 {
+    font-size: 1rem;
+  }
+
+  .image {
+    flex: none;
+    width: 100%;
+  }
+
+  .image img {
+    max-width: 420px;
+  }
+
+  .role {
+    padding: 2rem 1.5rem 3rem;
+  }
+
+  .role h2 {
+    font-size: 1.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .role ul {
+    grid-template-columns: 1fr;
   }
 
   .role li {
-    max-width: 100%;
-    flex: 1 1 100%;
-    justify-content: center;
-    text-align: center;
+    justify-content: flex-start;
+  }
+
+  .training-link {
+    width: 100%;
+  }
+}
+
+/* Respeita preferências de movimento reduzido */
+
+@media (prefers-reduced-motion: reduce) {
+  .training-link {
+    transition: none;
+  }
+
+  .training-link:hover {
+    transform: none;
   }
 }
